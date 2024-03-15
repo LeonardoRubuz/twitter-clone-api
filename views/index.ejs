@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+    <nav>
+        <ul class="nav-menu">
+            <li class="nav-item">
+                <a href="#introduction">Introduction</a>
+            </li>
+            <li class="nav-item">
+                <a href="#base-url">Base URL</a>
+            </li>
+            <li class="nav-item">
+                <a href="#auth">Authentification</a>
+            </li>
+            <li class="nav-item">
+                <a href="#endpoints">Ressources</a>
+            </li>
+        </ul>
+    </nav>
+    <main>
+        <section id="introduction">
+            <h2>Twitter Clone API </h2>
+            <p>
+                L'API de ce projet est une application web qui permet de récuperer tous les tweets et profils
+                d'utilisateurs. Il a été créé principalement pour le projet <a href="https://github.com/LeonardoRubuz/Project-07-Twitter-Clone-LeonardoRubuz" target="_blank" style="color:#0033a0">Twitter Clone</a>. 
+                Les utilisateurs pourront se servir de ces ressources via des requêtes HTTP.  
+            </p>
+            <p>
+                Pour signaler un problème, contribuer ou  simplement recréer le projet, rendez vous sur le repo : <br>
+                <a href="https://github.com/LeonardoRubuz/twitter-clone-api.git" style="color:#0033a0">
+                    https://github.com/LeonardoRubuz/twitter-clone-api
+                </a>
+            </p><br>
+            <p>
+                Les requêtes peuvent être effectuées grâce à la commande  <code style="color: red;">curl</code>  de 
+                l'invite de commande (terminal) ou via tout autre utilitaire tierce permettant les appels REST (ex: Postman, Swagger, ...). <br>
+                Voici un exemple d'appel : <br><br>
+                <code style="text-align: center;">
+                    curl https://twitter-clone-api-hy1e.onrender.com/profiles
+                </code>
+            </p>
+            <p>Appeler cette ressource renverra la liste des profiles enregistrés sous la forme suivante :</p>
+            <pre>
+                <code>
+[
+    {
+        "image": "/images/tweet-profile-photo.png",
+        "accountName": "CNN",
+        "username": "CNN",
+        "bio": "It's our job to #GoThere & tell the most difficult stories. For breaking news, follow @CNNBRK and download our app.cnn.com/apps",
+        "links": {
+            "location": "",
+            "website": "cnn.com"
+        },
+        "join_date": "2007",
+        "following": 1086,
+        "followers": 6000000,
+        "id": "cbc1"
+    },
+    {
+        "image": "/images/ny-times.png",
+        "accountName": "The New York Times",
+        "username": "nytimes",
+        "bio": "News tips? Share them here: http://nyti.ms/2FVHq9v",
+        "links": {
+            "location": "New York City, USA",
+            "website": "nytimes.com"
+        },
+        "join_date": "2007",
+        "following": 876,
+        "followers": 55100000,
+        "id": "37a9"
+    }
+]                
+                </code>
+            </pre>
+
+        </section>
+        <section id="base-url">
+            <h2>URL de Base</h2>
+            <p>Toutes les URLs doivent être préfixées par :</p><br>
+            <code>https://twitter-clone-api-hy1e.onrender.com/</code>
+        </section>
+        <section id="auth">
+            <h2>Authentification</h2>
+            <p>Aucune authentification n'est nécessaire pour l'utilisation de cette API</p>
+        </section>
+        <section id="endpoints">
+            <h2>Ressources</h2>
+            <div>
+                <h4>Utilisateur courant</h4>
+                <div>
+                    <div class="req-method">
+                        <div class="req-badge get-meth">get</div>
+                        <span><code>/user</code></span>
+                    </div>
+                    <p>Retourne les informations de l'utilisateur principal.</p>
+                    <h5>Réponses</h5>
+                    <ul>
+                        <li>
+                            200 - OK
+                            <pre>
+                                <code>
+{
+    "username": "Nom d'utilisateur",
+    "accountName": "Nom du compte",
+    "isLogged": "Statut de connexion",
+    "avatar": "Chemin d'accès vers l'avatar  de l'utilisateur"
+}
+                                </code>
+                            </pre>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div>
+                <h4>Profils d'utilisateurs</h4>
+                <div>
+                    <div class="req-method">
+                        <div class="req-badge get-meth">get</div>
+                        <span><code>/profiles</code></span>
+                    </div>
+                    <p>Renvoie la liste de tous les profils.</p>
+                    <h5>Réponses</h5>
+                    <ul>
+                        <li>
+                            200 - OK
+                            <pre>
+                                <code>
+[
+    {
+        "image": "Chemmin vers  l'image de profil",
+        "accountName": "Nom du compte",
+        "username": "Nom d'utilisateur",
+        "bio": "Bio du profile",
+        "links": {
+                "location": "Lien de la localisation",
+                "website": "Lien vers le site internet"
+            },
+        "join_date": "Date d'inscription",
+        "following": "Nombre de compte suivis",
+        "followers": "Nombre de d'abonnés",
+        "id": "cbc1"
+    },
+]
+                                </code>
+                            </pre>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div>
+                <h4>Tweets</h4>
+                <div>
+                    <div class="req-method">
+                        <div class="req-badge get-meth">get</div>
+                        <span><code>/tweets</code></span>
+                    </div>
+                    <p>Description de la ressource.</p>
+                    <h5>Réponses</h5>
+                    <ul>
+                        <li>
+                            200 - OK
+                            <pre>
+                                <code>
+                                    Objet
+                                </code>
+                            </pre>
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <div class="req-method">
+                        <div class="req-badge get-meth">get</div>
+                        <span><code>/:username/tweets</code></span>
+                    </div>
+                    <p>Description de la ressource.</p>
+                    <h5>Réponses</h5>
+                    <ul>
+                        <li>
+                            200 - OK
+                            <pre>
+                                <code>
+                                    Objet
+                                </code>
+                            </pre>
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <div class="req-method">
+                        <div class="req-badge post-meth">post</div>
+                        <span><code>/tweets</code></span>
+                    </div>
+                    <p>Description de la ressource.</p>
+                    <h5>Réponses</h5>
+                    <ul>
+                        <li>
+                            200 - OK
+                            <pre>
+                                <code>
+                                    Objet
+                                </code>
+                            </pre>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+</html>
